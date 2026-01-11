@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 import logo from "../assets/aniflux_logo.png";
+import { Github } from "lucide-react";
 
 export default function Navbar() {
   const { scrollY } = useScroll();
@@ -43,6 +44,8 @@ export default function Navbar() {
           <span className="font-bold text-white tracking-tight">AniFlux</span>
         </div>
 
+
+
         {/* Desktop Links (Hidden on small screens) */}
         <div className="hidden md:flex items-center gap-6 text-sm text-neutral-400">
           <a href="#" className="hover:text-white transition-colors">
@@ -51,8 +54,13 @@ export default function Navbar() {
           <a href="#" className="hover:text-white transition-colors">
             Community
           </a>
-          <a href="#" className="hover:text-white transition-colors">
-            Pricing
+          <a
+            href="https://github.com/som120/AniFlux"
+            target="_blank"
+            className="flex items-center gap-2 hover:text-white transition-colors"
+          >
+            <Github size={16} />
+            <span>Star on GitHub</span>
           </a>
         </div>
 

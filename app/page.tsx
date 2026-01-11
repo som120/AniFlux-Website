@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import ScrollText from "./components/ScrollText";
 import TypewriterSearch from "./components/TypewriterSearch";
 import AnimeWall from "./components/AnimeWall";
+import Community from "./components/Community";
 
 export default function AniFluxHero() {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -107,7 +108,10 @@ export default function AniFluxHero() {
         {/* 4. Social Proof */}
         <Testimonials />
 
-        {/* 5. Footer */}
+        {/* 5. Community */}
+        <Community />
+
+        {/* 6. Footer */}
         <Footer />
       </div>
     </div>

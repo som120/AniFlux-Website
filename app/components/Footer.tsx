@@ -53,7 +53,7 @@ export default function Footer() {
             <a href="#" className="hover:text-white">
               Discord
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="https://github.com/som120/AniFlux" target="_blank" className="hover:text-white">
               Github
             </a>
           </div>
