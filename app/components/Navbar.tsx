@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import Image from "next/image";
+import logo from "../assets/aniflux_logo.png";
 
 export default function Navbar() {
   const { scrollY } = useScroll();
@@ -30,7 +32,14 @@ export default function Navbar() {
       <div className="w-[90%] md:w-[600px] h-14 bg-black/60 backdrop-blur-md border border-white/10 rounded-full px-6 flex items-center justify-between shadow-lg shadow-blue-500/5">
         {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer">
-          <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
+          <div className="relative w-8 h-8 rounded-full overflow-hidden">
+            <Image
+              src={logo}
+              alt="AniFlux Logo"
+              fill
+              className="object-cover"
+            />
+          </div>
           <span className="font-bold text-white tracking-tight">AniFlux</span>
         </div>
 

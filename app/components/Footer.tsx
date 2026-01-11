@@ -2,6 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import logo from "../assets/aniflux_logo.png";
 
 export default function Footer() {
   return (
@@ -33,7 +35,17 @@ export default function Footer() {
         </div>
 
         <div className="mt-32 pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm">
-          <p>© 2026 AniFlux. All rights reserved.</p>
+          <div className="flex items-center gap-2">
+            <div className="relative w-6 h-6 rounded-full overflow-hidden">
+              <Image
+                src={logo}
+                alt="AniFlux Logo"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p>© 2026 AniFlux. All rights reserved.</p>
+          </div>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white">
               Twitter

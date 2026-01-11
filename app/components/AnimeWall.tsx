@@ -3,17 +3,31 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// I'm using real Anilist/MAL cover images here so it looks good immediately.
-// You can replace these with your own local images in /public later.
+// Local assets from ../assets/wall
+import angel from "../assets/wall/angel.png";
+import dragon from "../assets/wall/dragon.jpg";
+import fariy from "../assets/wall/fariy.jpg";
+import fruit from "../assets/wall/fruit.jpg";
+import immortal from "../assets/wall/immortal.png";
+import moon from "../assets/wall/moon.jpg";
+import naruto from "../assets/wall/naruto.jpg";
+import vinland from "../assets/wall/vinland.jpg";
+import aot from "../assets/wall/aot.jpg";
+import horimiya from "../assets/wall/horimiya.jpg";
+import chain from "../assets/wall/chain.png";
+
 const animeCovers = [
-  "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx142938-ECF5XF7p945k.jpg", // Chainsaw Man
-  "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154587-n1fmjws4WTPH.jpg", // Frieren
-  "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx151807-m1gX3iwPfK3e.jpg", // Solo Leveling
-  "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-YCDuy16jiHMp.jpg", // One Piece
-  "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx140960-Yl5M3AiLjmfr.jpg", // Spy x Family
-  "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113415-bbBWj4pEfseh.jpg", // JJK
-  "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-73IhOXpWZSpO.jpg", // AOT
-  "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx269-8M3sPVIiA4wN.jpg", // Bleach
+  angel,
+  dragon,
+  fariy,
+  fruit,
+  immortal,
+  moon,
+  naruto,
+  vinland,
+  aot,
+  horimiya,
+  chain,
 ];
 
 export default function AnimeWall() {
@@ -55,7 +69,7 @@ export default function AnimeWall() {
               className="relative w-[200px] h-[300px] flex-shrink-0 rounded-xl overflow-hidden border border-neutral-800 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110 hover:z-10 cursor-pointer group"
             >
               <img
-                src={src}
+                src={src.src}
                 alt="Anime Cover"
                 className="w-full h-full object-cover"
               />

@@ -3,15 +3,37 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import jjk from "../assets/sanime/jjk.jpg";
+import solo from "../assets/sanime/solo.png";
+import onePiece from "../assets/sanime/onepeice.jpg";
+
+import bleach from "../assets/sanime/bleach2.jpg";
+
 const searchQueries = [
   {
     text: "Jujutsu Kaisen",
     result: "Jujutsu Kaisen • TV • 2020",
     status: "Airing",
+    image: jjk,
   },
-  { text: "Solo Leveling", result: "Solo Leveling • TV • 2024", status: "New" },
-  { text: "One Piece", result: "One Piece • TV • 1999", status: "Airing" },
-  { text: "Bleach", result: "Bleach: TYBW • TV • 2022", status: "Completed" },
+  {
+    text: "Solo Leveling",
+    result: "Solo Leveling • TV • 2024",
+    status: "New",
+    image: solo,
+  },
+  {
+    text: "One Piece",
+    result: "One Piece • TV • 1999",
+    status: "Airing",
+    image: onePiece,
+  },
+  {
+    text: "Bleach",
+    result: "Bleach: TYBW • TV • 2022",
+    status: "Completed",
+    image: bleach,
+  },
 ];
 
 export default function TypewriterSearch() {
@@ -98,9 +120,17 @@ export default function TypewriterSearch() {
             className="absolute top-full left-0 right-0 mt-2 bg-neutral-800/90 backdrop-blur-xl border border-neutral-700 rounded-xl overflow-hidden shadow-xl"
           >
             <div className="p-3 hover:bg-neutral-700/50 cursor-pointer flex items-center gap-4 transition-colors">
-              {/* Fake Poster Thumbnail */}
-              <div className="w-10 h-14 bg-neutral-600 rounded flex items-center justify-center text-xs text-neutral-400">
-                IMG
+              {/* Poster Thumbnail */}
+              <div className="w-10 h-14 bg-neutral-600 rounded overflow-hidden flex-shrink-0">
+                <img
+                  src={
+                    typeof searchQueries[currentQueryIndex].image === "string"
+                      ? (searchQueries[currentQueryIndex].image as string)
+                      : (searchQueries[currentQueryIndex].image as any).src
+                  }
+                  alt={searchQueries[currentQueryIndex].text}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               <div className="flex-1">
