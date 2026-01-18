@@ -19,25 +19,29 @@ export default function Navbar() {
     }
 
     // 2. Function to fetch fresh data
-    const fetchStars = () => {
-      fetch("https://api.github.com/repos/som120/AniFlux")
-        .then((res) => {
-          if (!res.ok) throw new Error("Failed to fetch");
-          return res.json();
-        })
-        .then((data) => {
-          const count = data.stargazers_count;
+    const fetchStars = async () => {
+      try {
+        const res = await fetch("https://api.github.com/repos/som120/AniFlux");
+        if (!res.ok) {
+          // Silently fail if rate limited or other error
+          return;
+        }
+        const data = await res.json();
+        const count = data.stargazers_count;
+        if (typeof count === "number") {
           setStars(count);
           localStorage.setItem("aniflux-stars", count.toString());
-        })
-        .catch((err) => console.error("Error fetching stars:", err));
+        }
+      } catch {
+        // Silently fail - cached value will be used
+      }
     };
 
     // 3. Fetch immediately
     fetchStars();
 
-    // 4. Poll every 30 seconds to keep it "live"
-    const interval = setInterval(fetchStars, 30000);
+    // 4. Poll every 5 minutes to avoid rate limiting (60 requests/hour limit)
+    const interval = setInterval(fetchStars, 300000);
 
     return () => clearInterval(interval);
   }, []);
@@ -95,7 +99,7 @@ export default function Navbar() {
             <span>Star on GitHub</span>
             {stars !== null && (
               <span className="flex items-center bg-white/10 px-2 py-0.5 rounded-full text-xs font-semibold">
-                {stars} ★
+                {stars} <span className="text-yellow-400">★</span>
               </span>
             )}
           </a>

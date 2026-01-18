@@ -8,12 +8,12 @@ import InteractiveShowcase from "./components/InteractiveShowcase";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import ScrollText from "./components/ScrollText";
-import TypewriterSearch from "./components/TypewriterSearch";
+
 import AnimeWall from "./components/AnimeWall";
 import Community from "./components/Community";
 import DownloadSection from "./components/DownloadSection";
-import homeGif from "./assets/home.gif";
-import searchGif from "./assets/search.gif";
+import Lottie from "lottie-react";
+import showreelAnimation from "./assets/lottie_file/Showreel-Grid-Mobile-[remix].json";
 
 export default function AniFluxHero() {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -45,22 +45,6 @@ export default function AniFluxHero() {
           }}
         ></div>
 
-        {/* Floating Parallax Elements (Left & Right) */}
-        <motion.div
-          style={{ y: yBg }}
-          className="hidden md:block fixed top-40 left-10 lg:left-20 z-10 p-4 bg-gray-900/50 backdrop-blur-md border border-gray-700 rounded-xl"
-        >
-          <p className="text-pink-500 font-bold">AniFlux Watchlist</p>
-          <p className="text-sm text-gray-400">Next Episode: Sunday</p>
-        </motion.div>
-
-        <motion.div
-          style={{ y: yBg }}
-          className="hidden md:block fixed top-60 right-10 lg:right-20 z-10 p-4 bg-gray-900/50 backdrop-blur-md border border-gray-700 rounded-xl"
-        >
-          <p className="text-blue-500 font-bold">Sync Progress</p>
-          <p className="text-sm text-gray-400">MAL & Anilist</p>
-        </motion.div>
 
         {/* Main Center Content */}
         {/* Added gap-10 to separate Title, Search, and Image */}
@@ -73,38 +57,26 @@ export default function AniFluxHero() {
             <p className="mt-6 text-xl text-gray-400">Track. Watch. Save.</p>
           </div>
 
-          {/* Typewriter Search Bar */}
-          {/* Added margin top/bottom to give it space */}
-          <div className="w-full max-w-lg my-6">
-            <TypewriterSearch />
-          </div>
+
 
           {/* Dashboard Preview */}
-          <motion.div
-            style={{ y: yApp }}
-            className="w-[90%] md:w-[900px] h-[300px] md:h-[500px] bg-gray-800 rounded-lg shadow-2xl border border-gray-700 flex items-center justify-center relative overflow-hidden"
-          >
-            {/* Dashboard Preview Images */}
-            <div className="flex gap-4 md:gap-8 items-center justify-center w-full h-full p-4">
-              <div className="relative h-full aspect-[9/19] rounded-2xl overflow-hidden border-4 border-gray-800 shadow-2xl">
-                <img
-                  src={homeGif.src}
-                  alt="Home Preview"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="relative h-full aspect-[9/19] rounded-2xl overflow-hidden border-4 border-gray-800 shadow-2xl">
-                <img
-                  src={searchGif.src}
-                  alt="Search Preview"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Glossy overlay effect */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none rounded-lg"></div>
-          </motion.div>
+          <div className="relative overflow-hidden h-[600px] md:h-[1200px]">
+            <motion.div
+              style={{ y: yApp }}
+              className="w-full md:w-[1600px] h-full flex items-center justify-center"
+            >
+              <Lottie
+                animationData={showreelAnimation}
+                loop={true}
+                autoplay={true}
+                className="w-full h-full"
+              />
+            </motion.div>
+            {/* Top fade overlay */}
+            <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none z-10"></div>
+            {/* Bottom fade overlay */}
+            <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent pointer-events-none z-10"></div>
+          </div>
         </div>
       </div>
 
