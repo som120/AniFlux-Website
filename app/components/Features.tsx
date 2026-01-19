@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Reveal } from "./Reveal";
 import BentoCard from "./BentoCard";
+import Image from "next/image";
+import screenshot1 from "../assets/1.png";
 
 export default function Features() {
   return (
@@ -44,13 +46,13 @@ export default function Features() {
               Built with Flutter 3. Enjoy buttery smooth animations and native performance on Android.
             </p>
 
-            {/* Phone pinned to bottom */}
-            <div className="mt-auto flex justify-center pt-10">
-              <div className="w-40 h-80 bg-neutral-800 border-[8px] border-neutral-700 rounded-[30px] overflow-hidden">
-                <div className="w-full h-full bg-blue-900/20 grid place-items-center text-xs text-blue-300 text-center">
-                  Ep. 1044 <br /> List Scroll
-                </div>
-              </div>
+            {/* Phone screenshot */}
+            <div className="mt-auto flex justify-center pt-6">
+              <Image
+                src={screenshot1}
+                alt="AniFlux App Screenshot"
+                className="w-auto h-80 object-contain rounded-2xl"
+              />
             </div>
           </BentoCard>
 

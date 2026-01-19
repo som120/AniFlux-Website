@@ -2,6 +2,10 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import screenshot2 from "../assets/2.png";
+import screenshot3 from "../assets/3.png";
+import screenshot4 from "../assets/4.png";
 
 const tabs = [
   {
@@ -11,27 +15,12 @@ const tabs = [
       "One-tap updates. Mark Anime as Completed, Planning, or Watching instantly. ",
     color: "bg-blue-500",
     mockContent: (
-      <div className="w-full h-full bg-neutral-900 rounded-xl border border-neutral-800 p-6 flex flex-col gap-4">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-xl">
-            📺
-          </div>
-          <div>
-            <div className="h-4 w-32 bg-neutral-700 rounded mb-2"></div>
-            <div className="h-3 w-20 bg-neutral-800 rounded"></div>
-          </div>
-        </div>
-        <div className="space-y-3">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="flex justify-between items-center p-3 bg-neutral-800/50 rounded-lg"
-            >
-              <span className="text-neutral-400 text-sm">Image: (Show the episode list UI from your app). {10 + i}</span>
-              <span className="text-blue-400 text-xs font-mono">WATCHED</span>
-            </div>
-          ))}
-        </div>
+      <div className="w-full h-full flex items-center justify-center">
+        <Image
+          src={screenshot2}
+          alt="Seamless Tracking"
+          className="h-full w-auto object-contain rounded-xl"
+        />
       </div>
     ),
   },
@@ -42,15 +31,12 @@ const tabs = [
       "Never miss an episode. See exactly what's airing today, tomorrow, and next season.",
     color: "bg-purple-500",
     mockContent: (
-      <div className="w-full h-full bg-neutral-900 rounded-xl border border-neutral-800 p-6 flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-purple-500/10 blur-[60px]"></div>
-        <div className="text-center relative z-10">
-          <div className="text-6xl mb-4">🤖</div>
-          <h4 className="text-white text-lg font-bold">Matching... 98%</h4>
-          <p className="text-purple-300 mt-2">
-            Recommended: <br /> "Image: (Show the Seasonal/Calendar view)."
-          </p>
-        </div>
+      <div className="w-full h-full flex items-center justify-center">
+        <Image
+          src={screenshot3}
+          alt="Advanced Calendars"
+          className="h-full w-auto object-contain rounded-xl"
+        />
       </div>
     ),
   },
@@ -60,27 +46,12 @@ const tabs = [
     description: "High-res posters, character lists, and studio info at your fingertips.",
     color: "bg-pink-500",
     mockContent: (
-      <div className="w-full h-full bg-neutral-900 rounded-xl border border-neutral-800 p-6">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-neutral-400 text-sm">Image: (Show the Anime Details page).</span>
-        </div>
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gray-700 rounded-full"></div>
-            <div className="text-xs text-neutral-500">
-              <span className="text-white">Alex</span> is watching{" "}
-              <span className="text-pink-400">Naruto Ep. 5</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gray-700 rounded-full"></div>
-            <div className="text-xs text-neutral-500">
-              <span className="text-white">Sam</span> finished{" "}
-              <span className="text-pink-400">Bleach</span>
-            </div>
-          </div>
-        </div>
+      <div className="w-full h-full flex items-center justify-center">
+        <Image
+          src={screenshot4}
+          alt="Rich Details"
+          className="h-full w-auto object-contain rounded-xl"
+        />
       </div>
     ),
   },
@@ -111,18 +82,16 @@ export default function InteractiveShowcase() {
                 <div
                   key={tab.id}
                   onClick={() => setActiveTab(tab)}
-                  className={`p-4 rounded-xl cursor-pointer transition-all duration-300 border ${
-                    activeTab.id === tab.id
-                      ? "bg-neutral-900 border-neutral-700"
-                      : "bg-transparent border-transparent hover:bg-neutral-900/50"
-                  }`}
+                  className={`p-4 rounded-xl cursor-pointer transition-all duration-300 border ${activeTab.id === tab.id
+                    ? "bg-neutral-900 border-neutral-700"
+                    : "bg-transparent border-transparent hover:bg-neutral-900/50"
+                    }`}
                 >
                   <h3
-                    className={`text-lg font-semibold ${
-                      activeTab.id === tab.id
-                        ? "text-white"
-                        : "text-neutral-500"
-                    }`}
+                    className={`text-lg font-semibold ${activeTab.id === tab.id
+                      ? "text-white"
+                      : "text-neutral-500"
+                      }`}
                   >
                     {tab.label}
                   </h3>
@@ -141,7 +110,7 @@ export default function InteractiveShowcase() {
           </div>
 
           {/* RIGHT SIDE: Interactive Display */}
-          <div className="h-[400px] w-full relative">
+          <div className="h-[600px] w-full relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab.id}
@@ -151,24 +120,14 @@ export default function InteractiveShowcase() {
                 transition={{ duration: 0.3 }}
                 className="absolute inset-0"
               >
-                {/* This creates the "Glow" behind the card based on the active color */}
+                {/* This creates the "Glow" behind the image based on the active color */}
                 <div
                   className={`absolute inset-0 ${activeTab.color} blur-[100px] opacity-20`}
                 ></div>
 
-                {/* The actual Card */}
-                <div className="relative z-10 w-full h-full bg-black/80 backdrop-blur-xl border border-neutral-800 rounded-2xl overflow-hidden shadow-2xl">
-                  {/* Mac OS Window Dots decoration */}
-                  <div className="h-8 bg-neutral-900/50 border-b border-neutral-800 flex items-center px-4 gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  </div>
-
-                  {/* Content Area */}
-                  <div className="p-6 h-[calc(100%-2rem)]">
-                    {activeTab.mockContent}
-                  </div>
+                {/* The image only */}
+                <div className="relative z-10 w-full h-full flex items-center justify-center">
+                  {activeTab.mockContent}
                 </div>
               </motion.div>
             </AnimatePresence>
