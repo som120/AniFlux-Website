@@ -51,7 +51,7 @@ export default function Features() {
               <Image
                 src={screenshot1}
                 alt="AniFlux App Screenshot"
-                className="w-auto h-80 object-contain rounded-2xl"
+                className="w-auto h-120 object-contain rounded-2xl"
               />
             </div>
           </BentoCard>
