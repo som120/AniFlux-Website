@@ -1,117 +1,17 @@
-"use client";
+// app/page.tsx (SERVER COMPONENT — no "use client")
+import AniFluxHero from "./AniFluxHero";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import Navbar from "./components/Navbar";
-import Features from "./components/Features";
-import InteractiveShowcase from "./components/InteractiveShowcase";
-import Testimonials from "./components/Testimonials";
-import Footer from "./components/Footer";
-import ScrollText from "./components/ScrollText";
-
-import AnimeWall from "./components/AnimeWall";
-import Community from "./components/Community";
-import DownloadSection from "./components/DownloadSection";
-import Lottie from "lottie-react";
-import showreelAnimation from "./assets/lottie_file/Showreel-Grid-Mobile-[remix].json";
-
-export default function AniFluxHero() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end start"],
-  });
-
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const yApp = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
-
+export default function Home() {
   return (
-    <div className="bg-black text-white overflow-x-hidden relative [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-      {/* 0. Navbar */}
-      <Navbar />
+    <main>
+      {/* Strong server-rendered brand signal */}
+      <h1 className="sr-only">
+        AniFlux – Anime Discovery, Tracking & Watchlists
+      </h1>
 
-      {/* --- HERO SECTION --- */}
-      {/* Added pt-32 to push content down from behind the navbar */}
-      <div
-        ref={targetRef}
-        className="min-h-screen relative mb-20 pt-32 lg:pt-40"
-      >
-        {/* Background Grid */}
-        <div
-          className="fixed inset-0 z-0 opacity-20"
-          style={{
-            backgroundImage: "radial-gradient(#444 1px, transparent 1px)",
-            backgroundSize: "30px 30px",
-          }}
-        ></div>
-
-
-        {/* Main Center Content */}
-        {/* Added gap-10 to separate Title, Search, and Image */}
-        <div className="relative z-20 flex flex-col items-center justify-center min-h-[80vh] gap-10 px-4">
-          {/* Header Text */}
-          <div className="text-center">
-            <h1 
-              className="text-7xl md:text-9xl font-bold"
-              style={{ 
-                color: "#F8F9FA",
-                textShadow: "0px 0px 20px rgba(19, 137, 255, 1)"
-              }}
-            >
-              AniFlux
-            </h1>
-            <p className="mt-6 text-xl text-white">
-              Track<span style={{ color: "#2979FF" }}>.</span> Sync<span style={{ color: "#2979FF" }}>.</span> Discover<span style={{ color: "#2979FF" }}>.</span>
-            </p>
-          </div>
-
-
-
-          {/* Dashboard Preview */}
-          <div className="relative overflow-hidden h-[600px] md:h-[1200px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            <motion.div
-              style={{ y: yApp }}
-              className="w-full md:w-[1600px] h-full flex items-center justify-center"
-            >
-              <Lottie
-                animationData={showreelAnimation}
-                loop={true}
-                autoplay={true}
-                className="w-full h-full"
-              />
-            </motion.div>
-            {/* Top fade overlay */}
-            <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none z-10"></div>
-            {/* Bottom fade overlay */}
-            <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent pointer-events-none z-10"></div>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative z-30 bg-black">
-        <AnimeWall />
-        <div className="bg-black min-h-[50vh] flex items-center justify-center px-4">
-          <ScrollText content="Your Anime Journey, Perfected. The ultimate Flutter-based tracker—sync your progress, discover seasonal hits, and manage your collection with a stunning, clutter-free UI." />
-        </div>
-
-        {/* 2. Features Grid */}
-        <Features />
-
-        {/* 3. Interactive Tabs */}
-        <InteractiveShowcase />
-
-        {/* 4. Social Proof */}
-        <Testimonials />
-
-        {/* 5. Community */}
-        <Community />
-
-        {/* 6. Download Section */}
-        <DownloadSection />
-
-        {/* 7. Footer */}
-        <Footer />
-      </div>
-    </div>
+      <section>
+        <AniFluxHero />
+      </section>
+    </main>
   );
 }

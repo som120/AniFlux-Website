@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   },
   description:
     "AniFlux is a modern anime discovery platform to explore shows, characters, and trending anime with an immersive UI.",
+  alternates: {
+    canonical: "https://ani-flux.vercel.app/",
+  },
   verification: {
     google: "w37h_zy3eiifwMx1MSs2BGf5fxL0PhG67fGFOp7aozw",
   },
@@ -52,6 +55,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "AniFlux",
+              "url": "https://ani-flux.vercel.app/",
+              "publisher": {
+                "@type": "Organization",
+                "name": "AniFlux"
+              }
+            }),
+          }}
+        />
         {children}
 
         {/* Vercel Analytics */}
