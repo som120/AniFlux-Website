@@ -17,6 +17,9 @@ export default function Footer() {
         <a href="/privacy-policy" className="hover:text-black hover:scale-105 transition-all duration-300">
           Privacy Policy
         </a>
+        <a href="/delete-account" className="hover:text-black hover:scale-105 transition-all duration-300">
+          Delete Account
+        </a>
       </div>
 
       {/* Big Text Section */}
